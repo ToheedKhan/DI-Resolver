@@ -32,3 +32,20 @@
 
 import Foundation
 @testable import Cryptic
+
+// 1
+class MockNetworkService: NetworkServiceProtocol {
+  // 2
+  var result: Result<Data, AppError>?
+
+  // 3
+  func fetch(
+    with urlRequest: URLRequest,
+    completion: @escaping (Result<Data, AppError>) -> Void
+  ) {
+    guard let result = result else {
+      fatalError("Result is nil")
+    }
+    return completion(result)
+  }
+}

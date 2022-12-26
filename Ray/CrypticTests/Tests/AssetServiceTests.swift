@@ -34,6 +34,11 @@ import Resolver
 import XCTest
 @testable import Cryptic
 
+/*
+ Here, you test if AssetService handles the success and failure responses of NetworkService as expected.
+
+ In cases like this, mocking is an excellent approach because you’re in control of how you challenge your Subject Under Test, or SUT, based on different response types.
+ */
 class AssetServiceTests: XCTestCase {
   // MARK: - Properties
 	var sut: AssetService?

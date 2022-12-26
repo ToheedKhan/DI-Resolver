@@ -70,3 +70,21 @@ Unit testing is an important step in building a clean and maintainable codebase.
 DIP is one of the SOLID principles. It declares that high-level modules shouldn’t depend on low-level modules. Instead, both should depend on abstractions.
 
 For example, **AssetService**, a **high-level** module*, should be dependent on an abstraction of **NetworkService**, a **low-level module**. You implement abstractions in Swift with Protocols.
+
+#Generating Mock Data
+Mocking is an essential technique when writing unit tests. By mocking dependencies, you create fake versions of them, so your tests can focus solely on the class at hand rather than its collaborators.
+
+#Using Resolver’s Containers
+In a DI system, a container contains all the service registrations. By using Resolver, you can create different containers based on what your project needs. In this tutorial, you’ll create a Mock container for your Test target.
+By default, Resolver creates a main container for all static registrations. It also defines a root container. If you inspected Resolver’s code you’d see:
+```
+public final class Resolver {
+  public static let main: Resolver = Resolver()
+  public static var root: Resolver = main
+}
+```
+
+In this project, you use the default **main container** in the **App target** and a **mock container** in the **Test target.**
+
+Root -> Main Container
+App Target -> Test Target
