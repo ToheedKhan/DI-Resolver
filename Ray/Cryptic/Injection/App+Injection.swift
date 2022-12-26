@@ -48,6 +48,9 @@ extension Resolver: ResolverRegistering {
     register { _, args in
       AssetViewModel(asset: args())
     }
+    
+    register { AssetListViewModel() }
+
 
   }
 }

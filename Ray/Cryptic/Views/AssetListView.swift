@@ -34,7 +34,12 @@ import SwiftUI
 import Resolver
 
 struct AssetListView: View {
-	@ObservedObject var assetListViewModel: AssetListViewModel
+  /*
+   it already has @ObservedObject as property wrapper. So, you can’t use Annotation and add @Injected here.
+   
+   Instead, you either have to use Service Locator or other types of DI, such as Constructor Injection.
+   */
+  @ObservedObject var assetListViewModel: AssetListViewModel = Resolver.resolve()
 
 	var body: some View {
 		switch assetListViewModel.state {

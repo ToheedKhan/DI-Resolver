@@ -39,3 +39,10 @@ Resolver is a Dependency Injection framework for Swift that supports IoC.
 
 Resolver also introduced a new type named **Annotation.**
 Resolver uses **@Injected** as a property wrapper to inject dependencies.
+
+#Service Locator
+Service Locator is another design pattern you can use to implement IoC. Fortunately, Resolver supports Service Locator well.
+
+If a property wrapper is already being used for a property, then we can't use Annotation and add @Injected.
+   
+   Instead, we either have to use Service Locator or other types of DI, such as Constructor Injection.
