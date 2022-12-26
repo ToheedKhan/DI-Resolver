@@ -38,7 +38,28 @@ import Resolver
 
 // MARK: - NetworkService
 class NetworkService {
-	private let session = URLSession(configuration: .default)
+  //Here NetworkService is dependent on URLSession
+  //IT is hard to customize session.
+  /*
+   For example, using a custom configuration instead of the default one in URLSession would change NetworkService.
+   */
+//	private let session = URLSession(configuration: .default)
+  
+  //Solution
+  /*
+   Remove the URLSession constructor and make the session mutable.
+   Create an initializer for NetworkService and receive the session as a dependency.
+   Update the local session variable with the newly received value from the initializer.
+   */
+  
+  // 1
+  private var session: URLSession
+  // 2
+  init(session: URLSession) {
+    // 3
+    self.session = session
+  }
+//Now, NetworkService isn’t responsible for creating the session. Instead, it receives it through the initializer.
 }
 
 extension NetworkService {
