@@ -33,3 +33,9 @@ DI is a design pattern you can use to implement IoC. It lets you create dependen
 <kbd>
 <img width="421" alt="DependencyFlow" src="https://user-images.githubusercontent.com/4839453/209520315-8328a1ae-9216-401d-b336-6711529f16a7.png">
 </kbd>
+
+#Dependency Injection Using Resolver
+Resolver is a Dependency Injection framework for Swift that supports IoC.
+
+Resolver also introduced a new type named **Annotation.**
+Resolver uses **@Injected** as a property wrapper to inject dependencies.

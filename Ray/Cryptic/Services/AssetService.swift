@@ -39,20 +39,8 @@ import Resolver
 // MARK: - AssetService
 class AssetService {
 
-//	private let networkService = NetworkService()
-  
-  /*
-   Here, AssetService resolves the session by creating a URLSession instance and passing it to NetworkService.
-
-   As a result, NetworkService is loosely coupled to URLSession. Now, AssetService injects the session to NetworkService.
-   */
-  /*
-    Before this change, AssetService was only dependent on NetworkService and URLComponentsService. Now, it’s also dependent on URLSession.
-   */
-  private let networkService = NetworkService(
-    session: URLSession(configuration: .default))
-
-	private let urlComponentsService = URLComponentsService()
+  @Injected private var networkService: NetworkService
+  @Injected private var urlComponentsService: URLComponentsService
 }
 
 extension AssetService {
