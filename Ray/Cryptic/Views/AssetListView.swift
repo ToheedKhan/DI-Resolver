@@ -50,7 +50,7 @@ struct AssetListView: View {
 			NavigationView {
 				ScrollView {
 					ForEach(assets) {	asset in
-						AssetView(assetViewModel: AssetViewModel(asset: asset))
+            AssetView(assetViewModel: Resolver.resolve(args: asset))
 					}
 					.padding(EdgeInsets(top: 16, leading: 12, bottom: 16, trailing: 12))
 				}

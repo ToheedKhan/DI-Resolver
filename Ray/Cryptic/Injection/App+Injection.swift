@@ -42,5 +42,12 @@ extension Resolver: ResolverRegistering {
     register { NetworkService() }
     register { URLComponentsService() }
     register { AssetService() }
+    /*
+     Resolver uses the new callAsFunction feature from Swift 5.2 to immediately get the single passed argument from args.
+     */
+    register { _, args in
+      AssetViewModel(asset: args())
+    }
+
   }
 }
