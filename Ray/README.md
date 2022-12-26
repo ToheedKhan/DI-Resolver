@@ -29,7 +29,7 @@ In this tutorial, we’ll use DI to implement IoC.
 #Understanding Dependency Flow
 DI is a design pattern you can use to implement IoC. It lets you create dependent objects outside of the class that depends on them.
 
-**Your goal with DI is to resolve this chain of dependencies
+**Your goal with DI is to resolve this chain of dependencies**
 <kbd>
 <img width="421" alt="DependencyFlow" src="https://user-images.githubusercontent.com/4839453/209520315-8328a1ae-9216-401d-b336-6711529f16a7.png">
 </kbd>
