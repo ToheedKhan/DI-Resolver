@@ -46,3 +46,19 @@ Service Locator is another design pattern you can use to implement IoC. Fortunat
 If a property wrapper is already being used for a property, then we can't use Annotation and add @Injected.
    
    Instead, we either have to use Service Locator or other types of DI, such as Constructor Injection.
+
+#Using Scopes
+Resolver uses Scopes to control the lifecycles of instances. There are five different scopes in Resolver: **Graph, Application, Cached, Shared and Unique.**
+
+**Graph:** Graph is Resolver’s default scope. Once Resolver resolves the requested object, it discards all objects created in that flow. Consequently, the next call to Resolver creates new instances.
+**Application:** Application scope is the same as a singleton. The first time Resolver resolves an object, it retains the instance and uses it for all subsequent resolutions as long as the app is alive. You can define that by adding .scope(.application) to your registrations.
+
+
+You can define scopes in two ways. First, you could add scope to each registration separately like this:
+```
+register { NetworkService() }.scope(.graph)
+```
+Add the following as the first line in registerAllServices():
+```
+defaultScope = .graph
+```
