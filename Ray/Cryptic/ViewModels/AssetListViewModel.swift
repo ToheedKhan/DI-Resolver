@@ -36,7 +36,7 @@ import Resolver
 class AssetListViewModel: ObservableObject, Identifiable {
 	@Published private(set) var state: AssetListViewModelState = .idle
 
-	@Injected private let assetService = AssetService()
+  @Injected private var assetService: AssetService
 }
 
 extension AssetListViewModel {
