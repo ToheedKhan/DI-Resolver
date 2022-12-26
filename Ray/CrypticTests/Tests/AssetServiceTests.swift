@@ -41,6 +41,13 @@ import XCTest
  */
 class AssetServiceTests: XCTestCase {
   // MARK: - Properties
+  /*
+   By using **Lazy Injection** you ask Resolver to **lazy load** dependencies. Thus, Resolver won’t resolve this dependency before the first time it’s used.
+
+   You need to use @LazyInjected here because the dependencies aren’t available when the class is initiated as you registered them in setup().
+   */
+  @LazyInjected var networkService: MockNetworkService
+
 	var sut: AssetService?
 
 
@@ -49,6 +56,9 @@ class AssetServiceTests: XCTestCase {
 		super.setUp()
 
 		sut = AssetService()
+    
+    Resolver.registerMockServices()
+
 	}
 
 	override func tearDown() {
@@ -61,6 +71,18 @@ class AssetServiceTests: XCTestCase {
 // MARK: - Unit tests
 extension AssetServiceTests {
   func testFetchAssetsSuccessfully() {
+    // 1
+    let asset = mockAsset()
+    // 2
+    networkService.result = .success(assetList())
+
+    // 3
+    sut?.fetchAssets { assetList, error in
+      XCTAssertEqual(assetList?.data.count, 1)
+      XCTAssertEqual(assetList?.data.first, asset)
+      XCTAssertNil(error)
+    }
+
   }
 
   func testFetchAssetsFailure() {
