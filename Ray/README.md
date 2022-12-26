@@ -7,7 +7,7 @@ Few techniques to create loosely coupled classes.
 <img width="672" alt="Techniques to create loosley coupled code" src="https://user-images.githubusercontent.com/4839453/209520342-2d0f6a76-9d40-4e4d-9e24-4f379ee3a90e.png">
 </kbd>
 
-*Roadmap to move from Tightly Coupled to Loosely Coupled classes.
+**Roadmap to move from Tightly Coupled to Loosely Coupled classes.**
 
 
 <kbd>
