@@ -39,7 +39,9 @@ extension Resolver: ResolverRegistering {
     // 2
     register { URLSession(configuration: .default) }
     // 3
-    register { NetworkService() }
+//    register { NetworkService() }
+    register { NetworkService() }.implements(NetworkServiceProtocol.self)
+
     register { URLComponentsService() }
     register { AssetService() }
     /*

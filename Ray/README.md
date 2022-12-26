@@ -62,3 +62,11 @@ Add the following as the first line in registerAllServices():
 ```
 defaultScope = .graph
 ```
+
+#Unit Testing and the Dependency Inversion Principle
+
+Unit testing is an important step in building a clean and maintainable codebase. To ease the process of unit testing, we follow the **Dependency Inversion Principle, or DIP.**
+
+DIP is one of the SOLID principles. It declares that high-level modules shouldn’t depend on low-level modules. Instead, both should depend on abstractions.
+
+For example, **AssetService**, a **high-level** module*, should be dependent on an abstraction of **NetworkService**, a **low-level module**. You implement abstractions in Swift with Protocols.

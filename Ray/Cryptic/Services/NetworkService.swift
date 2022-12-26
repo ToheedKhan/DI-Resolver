@@ -34,6 +34,12 @@ import Foundation
 import Resolver
 
 // MARK: - NetworkServiceProtocol
+protocol NetworkServiceProtocol {
+  func fetch(
+    with urlRequest: URLRequest,
+    completion: @escaping (Result<Data, AppError>) -> Void
+  )
+}
 
 
 // MARK: - NetworkService
@@ -45,7 +51,8 @@ class NetworkService {
 
 }
 
-extension NetworkService {
+extension NetworkService: NetworkServiceProtocol {
+
 	func fetch(with urlRequest: URLRequest, completion: @escaping (Result<Data, AppError>) -> Void) {
 		guard urlRequest.httpMethod == "GET" else {
 			completion(.failure(AppError.network(description: "Something went wrong! Please try again later.")))

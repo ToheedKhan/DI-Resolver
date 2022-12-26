@@ -39,7 +39,7 @@ import Resolver
 // MARK: - AssetService
 class AssetService {
 
-  @Injected private var networkService: NetworkService
+  @Injected private var networkService: NetworkServiceProtocol
   @Injected private var urlComponentsService: URLComponentsService
 }
 
