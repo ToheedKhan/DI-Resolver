@@ -32,3 +32,15 @@
 
 import Foundation
 import Resolver
+
+// 1
+extension Resolver: ResolverRegistering {
+  public static func registerAllServices() {
+    // 2
+    register { URLSession(configuration: .default) }
+    // 3
+    register { NetworkService() }
+    register { URLComponentsService() }
+    register { AssetService() }
+  }
+}
