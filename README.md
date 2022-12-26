@@ -2,7 +2,7 @@
 
 Dependency Injection frameworks support the Inversion of Control design pattern.
 
-**Giving an object the things it needs to do its job.
+**Giving an object the things it needs to do its job.**
 
 Dependency injection allows us to write code that's loosely coupled, and as such, easier to reuse, to mock, and to test.
 
