@@ -98,6 +98,19 @@ Resolver is implemented in just over 700 lines of actual code in a single file, 
 * [Automatic Type Inference](https://github.com/hmlongco/Resolver/blob/master/Documentation/Types.md)
 * [Scopes](https://github.com/hmlongco/Resolver/blob/master/Documentation/Scopes.md): Application, Cached, Graph(default), Shared, and Unique
 Scopes are used to control the lifecycle of a given object instance once it's been resolved. That means that scopes are basically caches, and those caches are used to keep track of the objects they create.
+In DI speak, graph will reuse any object instances resolved during a given resolution cycle.
+
+Translating again, let’s say that a depends on b and c and that b and c both depend on d. We then do the following:
+
+@Injected private var a: A
+Resolver will attempt to resolve a, and in the process, it finds out that a needs a b and that b needs a d. It makes one of each and wires them together.
+
+Resolver then finds a also needs a c and that c also needs a d. Well, Resolver knows it’s already made a d, so it gives a copy of the existing reference to c. Now a has its b and c, and both of those refer to the same instance of d. Finally, we return our a, ready to use.
+
+In this case, graph depends on the idea that you probably want b and c to share d since they were all made during the same resolution cycle and, as such, would seem to be associated with one another.
+
+If you don’t want this behavior, you can just mark d’s dependency as unique. And if you never want this behavior, you can simply change Resolver’s default scope to unique.
+
 Application - Singleton
 Cached - a session-level scope that caches specific information until a user logs out.
 Can be resetas needed.
