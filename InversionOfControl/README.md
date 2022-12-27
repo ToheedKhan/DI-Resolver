@@ -36,9 +36,18 @@ IOC can be achieved in many ways. I would say if by any means you can segregate 
 
 The overall takeaway of the blog would be to keep your code segregated and maintain a clear separation of concerns. A segregated code should be reusable and behave as a plugin and plug out component inside your code providing it with input and configurations and letting it perform its actions and give back you the output.
 
+#Inversion of Control while designing Frameworks
+Inversion of control could come quite handy while you are designing frameworks. Let us say you are building a mobile app. You are designing a framework that makes certain web service calls and on success provides you back with the Data Model or if encountered with any error handles that by notifying the user.
+
+There are two ways in which you can design the flow of the above functionality:
+
+##Approach 1: Framework consumer takes control of the program flow
+##Approach 2: Framework controls the program flow
+
 #Conclusion
 Some of the examples help to elevate the dependency injection to that make code testable, maintainable, and extensible.
 
 Dependency Injection. Code that constructs a dependency (what-to-do part) — instantiating and injecting that dependency for the clients when needed, which is usually taken care of by the DI tools such as Swinject (when-to-do-part).
 Interfaces. Component client (when-to-do part) — Component Interface implementation (what-to-do part)
 Template Design Pattern. Template method when-to-do part — primitive subclass implementation what-to-do part
+
