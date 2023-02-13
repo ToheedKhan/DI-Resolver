@@ -6,9 +6,9 @@ Dependency Injection frameworks support the Inversion of Control design pattern.
 
 Dependency injection allows us to write code that's loosely coupled, and as such, easier to reuse, to mock, and to test.
 
-** An ultralight Dependency Injection / Service Locator framework for Swift 5.x on iOS.**
+**An ultralight Dependency Injection / Service Locator framework for Swift 5.x on iOS.**
 
-** Note: Later in 2022 Resolver will be deprecated and replaced by my new dependency injection system, Factory. Factory is compile-time safe and is smaller, lighter, and faster than Resolver. As good as Resolver is, Factory is better. **
+**Note: Later in 2022 Resolver will be deprecated and replaced by my new dependency injection system, Factory. Factory is compile-time safe and is smaller, lighter, and faster than Resolver. As good as Resolver is, Factory is better. **
 
 In object-oriented programming, there are several basic techniques to implement inversion of control. These are:
 
