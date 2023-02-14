@@ -8,7 +8,7 @@ Dependency injection allows us to write code that's loosely coupled, and as such
 
 **An ultralight Dependency Injection / Service Locator framework for Swift 5.x on iOS.**
 
-**Note: Later in 2022 Resolver will be deprecated and replaced by my new dependency injection system, Factory. Factory is compile-time safe and is smaller, lighter, and faster than Resolver. As good as Resolver is, Factory is better. **
+**Note: Later in 2022 Resolver will be deprecated and replaced by my new dependency injection system, Factory. Factory is compile-time safe and is smaller, lighter, and faster than Resolver. As good as Resolver is, Factory is better.**
 
 In object-oriented programming, there are several basic techniques to implement inversion of control. These are:
 
@@ -30,37 +30,51 @@ There are six classic dependency injection strategies:
 
 ### 1. Interface Injection
 **Pros**
+
 Lightweight.
 Hides dependency injection system from class.
 Useful for classes like UIViewController where you don't have access during the initialization process.
+
 **Cons**
+
 Writing an accessor function for every service that needs to be injected.
 
 ### 2. Property Injection
 Property Injection exposes its dependencies as properties, and it's up to the Dependency Injection system to make sure everything is setup prior to any methods being called.
+
 **Pros**
+
 Clean.
 Also fairly lightweight.
+
 **Cons**
+
 Exposes internals as public variables.
 Harder to ensure that an object has been given everything it needs to do its job.
 More work on the registration side of the fence.
 
 ### 3. Constructor Injection
 Pass all of the dependencies an object needs through its initialization function.
+
 **Pros**
+
 Ensures that the object has everything it needs to do its job, as the object can't be constructed otherwise.
 Hides dependencies as private or internal.
 Less code needed for the registration factory.
+
 **Cons**
+
 Requires object to have initializer with all parameters needed.
 More boilerplace code needed in the object initializer to transfer parameters to object properties.
 
 ### 4. Method Injection
 **Pros**
+
 Allows callers to configure the behavior of a method on the fly.
 Allows callers to construct their own behaviors and pass them into the method.
+
 **Cons**
+
 Exposes those behaviors to all of the classes that use it.
 Note
 In Swift, passing a closure into a method could also be considered a form of Method Injection.
@@ -69,30 +83,38 @@ In Swift, passing a closure into a method could also be considered a form of Met
 A Service Locator is basically a service that locates the resources and dependencies an object needs.
 
 Technically, Service Locator is its own Design Pattern, distinct from Dependency Injection, but Resolver supports both and the Service Locator pattern is particularly useful when supporting view controllers and other classes where the initialization process is outside of your control.
+
 **Pros**
+
 Less code.
 Useful for classes like UIViewController where you don't have access during the initialization process.
+
 **Cons**
+
 Exposes the dependency injection system to all of the classes that use it.
 
 ### 6. Annotation (NEW)
 Annotation uses comments or other metadata to indication that dependency injection is required.
+
 **Pros**
+
 Less code.
 Hides the specifics of the injection system. One could easily make an Injected property wrapper to support any DI system.
 Useful for classes like UIViewController where you don't have access during the initialization process.
+
 **Cons**
+
 Exposes the fact that a dependency injection system is used.
 Resolver supports them all
 
-##Property Wrappers
+## Property Wrappers
 @Injected 
 @LazyInjected 
 @WeakLazyInjected 
     
 There's also an **@InjectedObject** wrapper that can inject Observable Objects in **SwiftUI** views.
 
-#Features
+# Features
 Resolver is implemented in just over 700 lines of actual code in a single file, but it packs a ton of features into those 700 lines.
 
 * [Automatic Type Inference](https://github.com/hmlongco/Resolver/blob/master/Documentation/Types.md)
