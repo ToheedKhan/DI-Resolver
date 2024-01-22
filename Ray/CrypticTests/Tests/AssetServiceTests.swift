@@ -70,6 +70,12 @@ class AssetServiceTests: XCTestCase {
 
 // MARK: - Unit tests
 extension AssetServiceTests {
+  /*
+   Create a mock asset. The helper method mockAsset() is already included in the codebase for you. You’re welcome. :]
+   Assert a success result to MockNetworkService as you test a success case.
+   Fetch the assets from MockNetworkService. Test if you receive the same asset back as you provided to MockNetworkService.
+
+   */
   func testFetchAssetsSuccessfully() {
     // 1
     let asset = mockAsset()
@@ -84,8 +90,22 @@ extension AssetServiceTests {
     }
 
   }
-
+/*
+ Create a mock error of type AppError, as it’s the error type in this project.
+ Then create a failure result with networkError and pass it to the MockNetworkService. That’s the benefit of mocking dependencies: you have complete control over the response.
+ Fetch the assets from MockNetworkService. Test if you receive the same error back as you provided to MockNetworkService.
+ */
   func testFetchAssetsFailure() {
+    // 1
+    let networkError = AppError.network(description: "Something went wrong!")
+    // 2
+    networkService.result = .failure(networkError)
+
+    // 3
+    sut?.fetchAssets { assetList, error in
+      XCTAssertEqual(networkError, error)
+      XCTAssertNil(assetList)
+    }
   }
 }
 
